@@ -11,7 +11,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-11/12 mx-auto flex justify-between items-center py-4">
+    <div className="w-11/12 mx-auto flex justify-between items-center py-4">
       <ul className="flex gap-4 items-center">
         {links.map((link, ind) => (
           <Link key={ind} href={link.path}>
@@ -34,7 +34,7 @@ const Navbar = () => {
           <Link href={"/signup"}>Sign Up</Link>
         </li>
       </ul>
-    </nav>
+    </div>
   );
 };
 
