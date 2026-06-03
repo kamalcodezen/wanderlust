@@ -11,7 +11,6 @@ export const destinationData = async () => {
 }
 
 export const singleDestinationData = async (id) => {
-    
     // console.log(id, "server")
     const res = await fetch(`http://localhost:5000/destination/${id}`)
     const data = await res.json();
@@ -21,11 +20,7 @@ export const singleDestinationData = async (id) => {
 
 
 export const updateDestination = async (id, formData) => {
-
     const updateData = Object.fromEntries(formData.entries());
-
-    console.log(updateData, "data")
-
     const res = await fetch(
         `http://localhost:5000/destination/${id}`,
         {
@@ -38,13 +33,26 @@ export const updateDestination = async (id, formData) => {
     );
 
     const data = await res.json();
-
     if (data.modifiedCount > 0) {
         revalidatePath("/destination")
         redirect("/destination")
     }
-
-    // console.log("after res", data)
-
-    // return data;
 };
+
+
+export const deleteDestination = async (id) => {
+    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+
+    const data = await res.json()
+
+    if (data.deletedCount > 0) {
+        revalidatePath("/destination")
+        redirect("/destination")
+    }
+
+}

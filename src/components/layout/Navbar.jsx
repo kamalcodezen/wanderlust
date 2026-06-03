@@ -7,7 +7,7 @@ const Navbar = () => {
     { label: "Home", path: "/" },
     { label: "Destinations", path: "/destination" },
     { label: "My Bookings", path: "/" },
-    { label: "Destinations", path: "/add-destination" },
+    { label: "Add Destinations", path: "/add-destination" },
   ];
 
   return (
