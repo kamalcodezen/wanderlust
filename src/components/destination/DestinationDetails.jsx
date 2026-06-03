@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
+import EditModal from "./EditModal";
 
 const DestinationDetails = ({ destination }) => {
   console.log(destination, "single");
@@ -10,8 +11,8 @@ const DestinationDetails = ({ destination }) => {
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex  items-center gap-3 justify-end mt-5 mb-3">
-        {/* <EditModal destination={destination} />
-        <DeleteAlert destination={destination} /> */}
+        <EditModal destination={destination} />
+        {/* <DeleteAlert destination={destination} /> */}
       </div>
       <Image
         className="w-full h-70 object-cover"
