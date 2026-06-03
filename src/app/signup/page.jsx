@@ -2,7 +2,7 @@ import SignUp from "@/components/auth/SignUp";
 
 const SignUpPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <SignUp />
     </div>
   );
