@@ -5,9 +5,9 @@ import logo from "../../../public/assets/Wanderlast.png";
 const Navbar = () => {
   const links = [
     { label: "Home", path: "/" },
-    { label: "Destinations", path: "/" },
+    { label: "Destinations", path: "/destination" },
     { label: "My Bookings", path: "/" },
-    { label: "Admin", path: "/" },
+    { label: "Destinations", path: "/add-destination" },
   ];
 
   return (
