@@ -79,3 +79,19 @@ export const myBookingDetailsById = async (id) => {
     // console.log(data, "my bookings")
     return data;
 }
+
+export const cancelBookingById = async (bookingId) => {
+    const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    const data = await res.json()
+
+    if (data.deletedCount > 0) {
+        revalidatePath("/my-bookings")
+        redirect("/my-bookings")
+    }
+
+}

@@ -20,7 +20,7 @@ const BookingCard = ({ destination }) => {
       userId: user?.id,
       userImage: user?.image,
       departureDate: new Date(departureDate),
-      _id,
+      destinationId: _id,
       country,
       destinationName,
       imageUrl,
