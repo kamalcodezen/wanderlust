@@ -36,8 +36,9 @@ const SignUp = () => {
         },
         onSuccess: (ctx) => {
           //redirect to the dashboard or sign in page
-          toast.success("signUp Successful")
+          toast.success("signUp Successful");
           router.push("/");
+          router.refresh();
         },
         onError: (ctx) => {
           // display the error message
@@ -47,6 +48,12 @@ const SignUp = () => {
     );
 
     console.log(data, error, "form");
+  };
+
+  const handleGoogleSignin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -134,7 +141,7 @@ const SignUp = () => {
         <Button
           variant="outline"
           className="w-full rounded-none"
-          // onClick={handleGoogleSignin}
+          onClick={handleGoogleSignin}
         >
           <FcGoogle size={20} />
           Sign up with Google

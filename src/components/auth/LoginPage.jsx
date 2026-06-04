@@ -36,6 +36,7 @@ const Login = () => {
           //redirect to the dashboard or sign in page
           toast.success(`Welcome Back ${user?.name}`);
           router.push("/");
+          router.refresh();
         },
         onError: (ctx) => {
           // display the error message
@@ -45,6 +46,12 @@ const Login = () => {
     );
 
     console.log(data, error, "login");
+  };
+
+  const handleGoogleSignin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -120,7 +127,7 @@ const Login = () => {
         <Button
           variant="outline"
           className="w-full rounded-none"
-          // onClick={handleGoogleSignin}
+          onClick={handleGoogleSignin}
         >
           <FcGoogle size={20} />
           Sign in with Google

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/assets/Wanderlast.png";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
 
 const Navbar = () => {
@@ -59,7 +59,7 @@ const Navbar = () => {
               size="sm"
               variant="danger"
               className="rounded-none"
-              // onPress={handleSignOut}
+              onClick={() => authClient.signOut()}
             >
               Logout
             </Button>
