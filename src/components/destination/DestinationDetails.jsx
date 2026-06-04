@@ -3,6 +3,7 @@ import { FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
 import EditModal from "./EditModal";
 import DeleteAlert from "./DeleteAlert";
+import BookingCard from "../booking/BookingCard";
 
 const DestinationDetails = ({ destination }) => {
   console.log(destination, "single");
@@ -44,7 +45,7 @@ const DestinationDetails = ({ destination }) => {
           <p className="max-w-6xl">{description}</p>
         </div>
 
-        {/* <BookingCard destination={destination} /> */}
+        <BookingCard destination={destination} />
       </div>
     </div>
   );
