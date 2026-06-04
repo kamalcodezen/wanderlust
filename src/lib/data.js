@@ -56,3 +56,20 @@ export const deleteDestination = async (id) => {
     }
 
 }
+
+
+
+export const bookingDestinationData = async (bookingDetails) => {
+    const res = await fetch(`http://localhost:5000/booking`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookingDetails)
+    })
+    const data = await res.json()
+
+    // console.log(data, "after booking")
+
+}
+

@@ -5,8 +5,10 @@ import EditModal from "./EditModal";
 import DeleteAlert from "./DeleteAlert";
 import BookingCard from "../booking/BookingCard";
 
+
 const DestinationDetails = ({ destination }) => {
-  console.log(destination, "single");
+  // console.log(destination, "single");
+  
   const { imageUrl, price, destinationName, duration, country, description } =
     destination;
 
