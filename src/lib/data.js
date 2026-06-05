@@ -1,28 +1,27 @@
-"use server"
-
+"use server";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export const destinationData = async () => {
-    const res = await fetch("http://localhost:5000/destination")
-    const data = await res.json()
-    return data;
-}
+export const destinationData = async (token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
+    return await res.json();
+};
 
 export const singleDestinationData = async (id) => {
-    // console.log(id, "server")
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
-    const data = await res.json();
-    // console.log(data, "server")
-    return data
-}
-
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`);
+    return await res.json();
+};
 
 export const updateDestination = async (id, formData) => {
     const updateData = Object.fromEntries(formData.entries());
+
     const res = await fetch(
-        `http://localhost:5000/destination/${id}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`,
         {
             method: "PATCH",
             headers: {
@@ -33,65 +32,74 @@ export const updateDestination = async (id, formData) => {
     );
 
     const data = await res.json();
+
     if (data.modifiedCount > 0) {
-        revalidatePath("/destination")
-        redirect("/destination")
+        revalidatePath("/destination");
+        redirect("/destination");
     }
+
+    return data;
 };
 
-
 export const deleteDestination = async (id) => {
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    })
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    );
 
-    const data = await res.json()
+    const data = await res.json();
 
     if (data.deletedCount > 0) {
-        revalidatePath("/destination")
-        redirect("/destination")
+        revalidatePath("/destination");
+        redirect("/destination");
     }
 
-}
-
-
+    return data;
+};
 
 export const bookingDestinationData = async (bookingDetails) => {
-    const res = await fetch(`http://localhost:5000/booking`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(bookingDetails)
-    })
-    const data = await res.json()
+        body: JSON.stringify(bookingDetails),
+    });
 
-    // console.log(data, "after booking")
+    return await res.json();
+};
 
-}
+export const myBookingDetailsById = async (id, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
 
-export const myBookingDetailsById = async (id) => {
-    const res = await fetch(`http://localhost:5000/booking/${id}`)
-    const data = await res.json()
-    // console.log(data, "my bookings")
-    return data;
-}
+    return await res.json();
+};
 
 export const cancelBookingById = async (bookingId) => {
-    const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
         }
-    })
-    const data = await res.json()
+    );
+
+    const data = await res.json();
 
     if (data.deletedCount > 0) {
-        revalidatePath("/my-bookings")
-        redirect("/my-bookings")
+        revalidatePath("/my-bookings");
     }
 
-}
+    return data;
+};
