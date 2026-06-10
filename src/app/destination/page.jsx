@@ -4,6 +4,7 @@ import { destinationData } from "@/lib/data";
 import { headers } from "next/headers";
 
 const DestinationPage = async () => {
+  
   const { token } = await auth.api.getToken({
     headers: await headers(),
   });

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const DestinationCard = ({  des }) => {
   const { _id, imageUrl, price, destinationName, duration, country } =
-    des;
+     des; 
 
   return (
     <div className="border">

@@ -46,6 +46,7 @@ const AddDestination = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Destination Name */}
             <div className="md:col-span-2">
+            
               <TextField name="destinationName" isRequired>
                 <Label>Destination Name</Label>
                 <Input placeholder="Bali Paradise" className="rounded-2xl" />

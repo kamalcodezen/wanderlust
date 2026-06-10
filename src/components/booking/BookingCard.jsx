@@ -17,6 +17,7 @@ const BookingCard = ({ destination }) => {
   const [isBooking, setIsBooking] = useState(false);
 
   const handleBooking = async () => {
+    
     if (!user) {
       toast.error("Please login first");
       return;
